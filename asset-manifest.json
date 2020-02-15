@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.js": "/option-deployer/static/js/main.1bde7258.chunk.js",
+    "main.js.map": "/option-deployer/static/js/main.1bde7258.chunk.js.map",
+    "runtime-main.js": "/option-deployer/static/js/runtime-main.38984f49.js",
+    "runtime-main.js.map": "/option-deployer/static/js/runtime-main.38984f49.js.map",
+    "static/css/2.764ccc25.chunk.css": "/option-deployer/static/css/2.764ccc25.chunk.css",
+    "static/js/2.ab2e40d2.chunk.js": "/option-deployer/static/js/2.ab2e40d2.chunk.js",
+    "static/js/2.ab2e40d2.chunk.js.map": "/option-deployer/static/js/2.ab2e40d2.chunk.js.map",
+    "index.html": "/option-deployer/index.html",
+    "precache-manifest.f7ff79ea1d9fc11ae5cb9b149c5d94b0.js": "/option-deployer/precache-manifest.f7ff79ea1d9fc11ae5cb9b149c5d94b0.js",
+    "service-worker.js": "/option-deployer/service-worker.js",
+    "static/css/2.764ccc25.chunk.css.map": "/option-deployer/static/css/2.764ccc25.chunk.css.map",
+    "static/js/2.ab2e40d2.chunk.js.LICENSE": "/option-deployer/static/js/2.ab2e40d2.chunk.js.LICENSE",
+    "static/media/logo.svg": "/option-deployer/static/media/logo.cc8307fe.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.38984f49.js",
+    "static/css/2.764ccc25.chunk.css",
+    "static/js/2.ab2e40d2.chunk.js",
+    "static/js/main.1bde7258.chunk.js"
+  ]
+}
