@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, SelectField, TextInputField } from 'evergreen-ui'
 import { FormField } from 'components'
 import getAddresses from 'constants/addresses'
+import useSuggestedExpirationBlock from 'hooks/useSuggestedExpirationBlock'
 
 export default function OptionForm ({ onSubmit, isSubmitting }) {
   const [underlyingAsset, setUnderlyingAsset] = useState('weth')
@@ -9,13 +10,16 @@ export default function OptionForm ({ onSubmit, isSubmitting }) {
   const [strikePrice, setStrikePrice] = useState(200)
   const [optionName, setOptionName] = useState('')
   const [optionSymbol, setOptionSymbol] = useState('')
+  const [expirationBlock, setExpirationBlock] = useState('')
+  const suggestedExpirationBlock = useSuggestedExpirationBlock(2880) // 1 month
 
   const formData = {
     underlyingAsset,
     strikeAsset,
     strikePrice,
     optionName,
-    optionSymbol
+    optionSymbol,
+    expirationBlock
   }
 
   const suggestedName = suggestName(formData)
@@ -35,6 +39,10 @@ export default function OptionForm ({ onSubmit, isSubmitting }) {
 
       if (!data.optionSymbol) {
         data.optionSymbol = suggestedSymbol
+      }
+
+      if (!data.expirationBlock) {
+        data.expirationBlock = suggestedExpirationBlock
       }
 
       onSubmit(data)
@@ -71,15 +79,7 @@ export default function OptionForm ({ onSubmit, isSubmitting }) {
           const value = event.target.value.replace(/(^.*?\.\d{2}).*?$/, '$1')
           setStrikePrice(value)
         }}
-        onKeyPress={e => {
-          const charCode = e.which ? e.which : e.keyCode
-
-          // Prevent 'minus' character
-          if (charCode === 45) {
-            e.preventDefault()
-            e.stopPropagation()
-          }
-        }}
+        onKeyPress={preventMinus}
       />
 
       <FormField
@@ -96,6 +96,20 @@ export default function OptionForm ({ onSubmit, isSubmitting }) {
         placeholder={suggestedSymbol}
         value={optionSymbol}
         onChange={setOptionSymbol}
+      />
+
+      <TextInputField
+        label='Expiration block'
+        isRequired
+        placeholder={typeof suggestedExpirationBlock === 'number' ? suggestedExpirationBlock.toString() : ''}
+        value={expirationBlock}
+        type='tel'
+        min={0}
+        onChange={event => {
+          const value = event.target.value.replace(/\D/g, '')
+          setExpirationBlock(value)
+        }}
+        onKeyPress={preventMinus}
       />
 
       <Button appearance='primary' type='submit' isLoading={isSubmitting}>
@@ -116,4 +130,14 @@ function suggestSymbol (data) {
 function getTokenAddress (asset) {
   const addresses = getAddresses()
   return addresses[asset]
+}
+
+function preventMinus (e) {
+  const charCode = e.which ? e.which : e.keyCode
+
+  // Prevent 'minus' character
+  if (charCode === 45) {
+    e.preventDefault()
+    e.stopPropagation()
+  }
 }
