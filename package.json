@@ -1,0 +1,68 @@
+{
+  "name": "option-builder",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://ggviana.github.io/option-deployer",
+  "description": "Deploy Option contracts easily",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:ci": "CI=true react-scripts test --env=jsdom --passWithNoTests",
+    "eject": "react-scripts eject",
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm run test:ci"
+    }
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "describe",
+      "beforeAll",
+      "test",
+      "expect",
+      "fetch"
+    ]
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "evergreen-ui": "4.23.0",
+    "normalize.css": "8.0.1",
+    "numeral": "2.0.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "3.3.0",
+    "styled-components": "4.4.1",
+    "web3": "1.2.6"
+  },
+  "devDependencies": {
+    "gh-pages": "2.2.0",
+    "husky": "4.0.6",
+    "standard": "14.3.1"
+  }
+}
