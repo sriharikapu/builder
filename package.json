@@ -2,7 +2,6 @@
   "name": "option-builder",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ggviana.github.io/option-deployer",
   "description": "Deploy Option contracts easily",
   "scripts": {
     "start": "react-scripts start",
